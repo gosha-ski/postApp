@@ -8,7 +8,7 @@ dotenv.config()
 
 export class App{
 	app: express.Application = express();
-	port: string = process.env.MAIN_PORT;
+	port: number = Number(process.env.MAIN_PORT);
 
 	constructor(controllers: ControllerInterface[]){
 		this.initControllers(controllers);
@@ -23,7 +23,7 @@ export class App{
 
 	private initControllers(controllers: ControllerInterface[]){
 		controllers.forEach(controller=>{
-			this.app.use(controller);
+			this.app.use("/",controller.router);
 		})
 	}
 
