@@ -2,6 +2,7 @@ import {Request, Response, Router} from "express"
 import {pool} from "../postgre/pool"
 import {UserInterface} from "./user_interface"
 import {ControllerInterface} from "../interfaces/controller_interface"
+import {authenticationMiddleware} from "../middleware/authentication_middleware"
 
 export class UserController implements ControllerInterface{
 	router = Router();
@@ -12,8 +13,8 @@ export class UserController implements ControllerInterface{
 	}
 
 	private initRoutes(){
-		this.router.get(this.path, this.getAllUsers);
-		this.router.get(`${this.path}/:id`, this.getUserById)
+		this.router.get(this.path, authenticationMiddleware, this.getAllUsers);
+		this.router.get(`${this.path}/:id`, authenticationMiddleware, this.getUserById)
 	}
 
 	private getAllUsers = async(request: Request, response: Response)=>{

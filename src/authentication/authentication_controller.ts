@@ -3,8 +3,9 @@ import * as bodyParser from "body-parser"
 import {pool} from "../postgre/pool"
 import * as uniqid from "uniqid"
 import * as jwt from "jsonwebtoken"
+import {ControllerInterface} from "../interfaces/controller_interface"
 
-export class AuthenticationController{
+export class AuthenticationController implements ControllerInterface{
 	path: string = "/authentication"
 	router = Router()
 
