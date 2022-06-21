@@ -4,3 +4,4 @@ export interface UserInterface{
 	password: string;
 	nickname: string;
 }
+

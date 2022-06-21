@@ -11,12 +11,13 @@ export class App{
 	port: number = Number(process.env.MAIN_PORT);
 
 	constructor(controllers: ControllerInterface[]){
-		this.initControllers(controllers);
 		this.initMiddlewares();
+		this.initControllers(controllers);
 		this.listen();
 	}
 
 	private initMiddlewares(){
+		//this.app.use(express.bodyParser())
 		this.app.use(bodyParser.json());
 		this.app.use(cookieParser());
 	}
