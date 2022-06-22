@@ -29,7 +29,7 @@ export class UserController implements ControllerInterface{
 	private getUserById = async(request: Request, response: Response)=>{
 		try{
 			const user_id: string = request.params.id;
-			const user: UserInterface = (await pool.query(`SELECT id,email,nickname FROM users WHERE id = '${user_id}'`)).rows[0]
+			const user = (await pool.query(`SELECT id,email,nickname FROM users WHERE id = '${user_id}'`)).rows[0]
 			response.status(200).send(user)
 		}catch(error){
 			response.send(error)

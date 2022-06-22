@@ -63,7 +63,7 @@ export class AuthenticationController implements ControllerInterface{
 	}
 
 	private createToken(data):string{
-		return jwt.sign(data, process.env.JWT_KEY, {expiresIn: process.env.JWT_EXPIRESIN})
+		return jwt.sign(data, process.env.JWT_KEY, {expiresIn: 36000})
 	}
 
 }
